@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:musicplayer/pages/home_page.dart';
 
-class HomePage extends StatefulWidget{
-  @override
-  State<StatefulWidget> createState() => _HomePageState();
+void main() {
+  runApp(MyApp());
 }
 
-class _HomePageState extends State<HomePage> {
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-     return Scaffold(appBar: AppBar(title: Text('PlayList',),
-     ),
-     );
+   return MaterialApp(home: HomePage());
   }
 }
