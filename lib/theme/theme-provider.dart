@@ -4,7 +4,7 @@ import 'package:musicplayer/theme/light_mode.dart';
 
 class ThemeProvider extends ChangeNotifier {
   // at first it must be light
-  ThemeData _themeData = lightmode;
+   ThemeData _themeData = lightmode;
 
     // we need geeter to take the  now theme
     ThemeData get ThemeData => _themeData;
@@ -20,5 +20,14 @@ class ThemeProvider extends ChangeNotifier {
 
     }
     // for changing the theme we must make a function
-    
+     void toggleTheme(){
+      if(_themeData ==lightmode){
+        _themeData = darkmode;
+        notifyListeners();
+      }
+      else{
+        _themeData = lightmode;
+        notifyListeners();
+      }
+     }   
 }
