@@ -1,0 +1,37 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:musicplayer/theme/theme-provider.dart';
+import 'package:provider/provider.dart';
+
+class Settings extends StatefulWidget{
+  @override
+  State<StatefulWidget> createState() => _SettingsPageState();
+
+}
+ class _SettingsPageState extends State<Settings> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold( 
+      appBar: AppBar(
+        title: Text("Settings"),
+      ),
+      body: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(12),
+          color: Colors.grey.shade600
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Row( 
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text("Dark Mode"),
+            CupertinoSwitch(value: Provider.of<ThemeProvider>(context,listen: false).isDarkmode, onChanged: (value) =>Provider.of<ThemeProvider>(context,
+            listen: false)),
+          ],
+          ),
+        ),
+      ),
+    );
+  }
+ }

@@ -36,20 +36,36 @@ class _HomePageState extends State<HomePage> {
 }
 
 Widget MusicPlayList(){
-  return GridView.builder(
-    itemCount: songList.length,
-    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
-      itemBuilder: (context, index){
-    return Card(
-      child: Column(
-        children: [
-          Image.asset(songList[index].imgUrl,
-          fit: BoxFit.cover,
+  return Padding(
+    padding: const EdgeInsets.all(11),
+    child: GridView.builder(
+      itemCount: songList.length,
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+         mainAxisSpacing: 4,
+         crossAxisSpacing: 4
+        ),
+        itemBuilder: (context, index){
+      return Container(
+        decoration: BoxDecoration(
+          boxShadow: [ BoxShadow(
+            blurRadius: 12,
+            color: Colors.black38,
+            offset: Offset(2, 4),
+            spreadRadius: 12
           ),
-
-
-        ],
-      ),
-    );
-  });
+          ],
+        ),
+        child: Column(
+          children: [
+            Image.asset(songList[index].imgUrl,
+            fit: BoxFit.cover,
+            ),
+    
+    
+          ],
+        ),
+      );
+    }),
+  );
 }
