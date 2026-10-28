@@ -11,6 +11,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
      return Scaffold(appBar: AppBar(title: Text('PlayList', style: GoogleFonts.pacifico(fontSize: 12),),
      ),
+     drawer: Drawer(),
      );
   }
 }
