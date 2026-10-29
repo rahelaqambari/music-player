@@ -26,7 +26,7 @@ class Settings extends StatefulWidget{
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text("Dark Mode"),
-            CupertinoSwitch(value: Provider.of<ThemeProvider>(context,listen: false).isDarkmode, onChanged: (value) =>Provider.of<ThemeProvider>(context,
+            CupertinoSwitch(value: Provider.of<ThemeProvider>(context,listen: false).isDarkMode, onChanged: (value) =>Provider.of<ThemeProvider>(context,
             listen: false)),
           ],
           ),

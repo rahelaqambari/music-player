@@ -13,7 +13,7 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-   return MaterialApp(home: HomePage(), theme: Provider.of<ThemeProvider>(context).ThemeData,
+   return MaterialApp(home: HomePage(), theme: Provider.of<ThemeProvider>(context).themeData,
    );
   }
 }

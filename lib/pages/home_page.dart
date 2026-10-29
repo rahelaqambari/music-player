@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:musicplayer/pages/setting.dart';
 import 'package:musicplayer/repositories/song_repositry.dart';
 
 class HomePage extends StatefulWidget{
@@ -25,6 +26,22 @@ class _HomePageState extends State<HomePage> {
               )
             ],
           ),
+          ),
+          ListTile(
+            leading: Icon(Icons.home),
+            title: Text("Home"),
+            onTap: () {
+              Navigator.pop(context);
+            },
+          ),
+
+          ListTile(
+            leading: Icon(Icons.settings),
+            title: Text("Settings"),
+            onTap: () {
+              Navigator.push(context,MaterialPageRoute(builder: (context) => Settings()),
+              );
+            },
           ),
         ],
       ),
