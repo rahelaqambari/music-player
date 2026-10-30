@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:musicplayer/pages/setting.dart';
+import 'package:musicplayer/pages/song_page.dart';
 import 'package:musicplayer/repositories/song_repositry.dart';
+import 'package:musicplayer/theme/theme-provider.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget{
   @override
@@ -53,37 +56,43 @@ class _HomePageState extends State<HomePage> {
 }
 
 Widget MusicPlayList(){
-  return Padding(
-    padding: const EdgeInsets.all(11),
+  Padding(
+    padding: const EdgeInsets.all(14),
     child: GridView.builder(
       itemCount: songList.length,
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
-         mainAxisSpacing: 6,
-         crossAxisSpacing: 6
+         mainAxisSpacing: 12,
+         crossAxisSpacing: 12,  
         ),
-        itemBuilder: (context, index){
-      return Container(
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(12),
-          boxShadow: [ BoxShadow(
-            blurRadius: 3,
-            color: Colors.grey.shade300,
-            offset: Offset(2, 4),
-            spreadRadius: 2
-          ),
+        itemBuilder: (context, index) {
+          final song = songList[index];
+          final isDark = Theme.of(context).brightness == Brightness.dark;
 
-          BoxShadow(
-            blurRadius: 3,
-            color: Colors.grey.shade200,
-            offset: Offset(-2, -4),
-            spreadRadius: 2
-          ),
-          
-          ],
-        ),
-        child: Column(
+          final raduis = BorderRadius.circular(12);
+      return Material(
+        color: Theme.of(context).colorScheme.surface,
+        elevation: isDark ? 3 :2,
+        shadowColor: Colors.black.withValues(alpha: isDark ? 0.45 : 0.50),
+        borderRadius: raduis,
+        clipBehavior: Clip.antiAlias,
+        child: InkWell(
+          borderRadius: raduis,
+          onTap: () {
+            Navigator.push(
+              context, MaterialPageRoute(
+                builder: (context)=> 
+                SongPage(song_Id: song.id),),
+            );
+          },
+          child: Ink(
+            decoration: BoxDecoration(
+              color: Provider.of<ThemeProvider>(context).isDarkMode
+              ? Colors.black 
+              : Colors,white,
+              borderRadius: raduis,
+            ),
+            child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
@@ -102,10 +111,23 @@ Widget MusicPlayList(){
               fontWeight: FontWeight.w800,
               color: const Color.fromARGB(255, 207, 15, 121)
             ),
-            ),   
+            ),
+            Align( 
+              alignment: AlignmentGeometry.bottomEnd,
+              child: 
+            Icon(Icons.remove_red_eye_rounded) ,) 
           ],
         ),
+          ),
+        ),
       );
-    }),
+    ),
   );
 }
+
+        
+      
+      
+      
+      
+      
